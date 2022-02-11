@@ -1,29 +1,30 @@
 package web.Service;
 
+import org.springframework.stereotype.Service;
 import web.Model.Car;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class CarServiceImpl implements CarService {
 
-    public List<Car> addCar() {
-        List<Car> carList = new ArrayList<>();
-        carList.add(new Car("Audi", "R8", 2015));
-        carList.add(new Car("Audi", "A4", 2019));
-        carList.add(new Car("Audi", "A6", 2018));
-        carList.add(new Car("Mazda", "RX8", 2008));
-        carList.add(new Car("Subaru", "ImprezaWRX", 2005));
+    private final List<Car> carsList = List.of(
+            new Car("Audi", "R8", 2015),
+            new Car("Audi", "A4", 2019),
+            new Car("Audi", "A6", 2018),
+            new Car("Mazda", "RX8", 2008),
+            new Car("Subaru", "ImprezaWRX", 2005)
+    );
 
-        return carList;
-    }
-    public List<Car> getCar(List<Car> carList, String count) {
-        if (count!=null) {
-            int c = Integer.parseInt(count);
-            return carList.stream().limit(c).collect(Collectors.toList());
-        } else {
-            return carList;
+    public List<Car> getCar(int count) {
+        if (count == 0) {
+            return carsList;
         }
+        if (count > 0){
+            return carsList.stream().limit(count).collect(Collectors.toList());
+        }
+        return new ArrayList<>();
     }
 }
