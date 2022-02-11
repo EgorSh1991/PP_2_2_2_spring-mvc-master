@@ -42,17 +42,6 @@ public class Car {
         this.year = year;
     }
 
-    public static List<Car> carListGen() {
-        List<Car> carList = new ArrayList<>();
-        carList.add(new Car("Audi", "R8", 2015));
-        carList.add(new Car("Audi", "A4", 2019));
-        carList.add(new Car("Audi", "A6", 2018));
-        carList.add(new Car("Mazda", "RX8", 2008));
-        carList.add(new Car("Subaru", "ImprezaWRX", 2005));
-
-        return carList;
-    }
-
     @Override
     public String toString() {
         return "Car{" +
