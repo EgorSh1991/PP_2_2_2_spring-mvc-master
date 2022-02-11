@@ -3,7 +3,6 @@ package web.Service;
 import org.springframework.stereotype.Service;
 import web.Model.Car;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,10 +20,8 @@ public class CarServiceImpl implements CarService {
     public List<Car> getCar(int count) {
         if (count == 0) {
             return carsList;
-        }
-        if (count > 0){
+        } else {
             return carsList.stream().limit(count).collect(Collectors.toList());
         }
-        return new ArrayList<>();
     }
 }

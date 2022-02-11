@@ -7,17 +7,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.RequestParam;
 
-import web.Service.CarServiceImpl;
-
+import web.Service.CarService;
 
 
 @Controller
 public class CarController {
     @Autowired
-    private final CarServiceImpl service = null;
+    private final CarService service = null;
 
     @GetMapping("/cars")
-    public String getCar(@RequestParam(name="count", defaultValue = "0") int count, Model model) {
+    public String getCar(@RequestParam(name = "count", defaultValue = "0") int count, Model model) {
         model.addAttribute("cars", service.getCar(count));
         return "/cars";
     }
